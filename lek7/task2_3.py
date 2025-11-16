@@ -1,37 +1,16 @@
 from tkinter import *
-from tkinter import messagebox 
+from tkinter import messagebox as MessageBox
 
-def start(event):
-    
-    user_input = entry_1.get()
-    if (user_input.isdigit() or 
-        (user_input.startswith('-') and user_input[1:].isdigit())):
-        
-        number = int(user_input)
-        square = number * number
-        
-        messagebox.showinfo(
-            "Результат обчислення",
-            f"Добуток введеного числа на нього самого: {square}"
-        )
-        
-    else:
-        messagebox.showerror(
-            "Помилка вводу",
-            "Будь ласка, введіть тільки ціле число!"
-        )
+def change(event):
+    user_input=int(enter1.get())
+    user_input*=user_input
+    MessageBox.showinfo("Ваш результат", f"Квадрат введеного числа: {user_input}")
 
-window = Tk()
-window.title("Це є вікно :)")
+window=Tk()
+window.title("Це є вікно:)")
 window.geometry("875x578")
-window.config(bg="#E0F7FA")
+enter1=Entry(window, width=35)
+enter1.place(x=100, y=100)
+window.bind("<Button-3>", change)
 
-entry_1 = Entry(
-    window,
-    width=35,
-    font=("Arial", 12)
-)
-entry_1.place(x=100, y=100)
-
-entry_1.bind("<Button-3>", start)
 window.mainloop()

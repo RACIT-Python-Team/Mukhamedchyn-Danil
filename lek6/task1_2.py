@@ -3,7 +3,7 @@ from tkinter import *
 def setup_window(event):
     window.geometry("700x600")
     window.config(bg="#E0B0FF")
-    window.title("Назва Моєї Школи")
+    window.title("Ліцей №9")
     window.resizable(False, False)
 
 window = Tk()

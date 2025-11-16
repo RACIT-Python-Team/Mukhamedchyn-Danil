@@ -1,12 +1,12 @@
-import tkinter as tk
+from tkinter import *
 
 
-window = tk.Tk()
+window = Tk()
 window.title("Вікно №1")
 window.geometry("500x500")
 
 
-label_1 = tk.Label(
+label_1 = Label(
     window,
     text="Це вікно було створено в середовищі IDLE",
     bg="blue",         

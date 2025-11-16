@@ -1,44 +1,23 @@
 from tkinter import *
 
-def start(event):
+def change(event):
+    label1.config(text=enter1.get())
 
-    user_input = entry_1.get()
-    
-    if user_input: 
-        label_1.config(text=user_input)
-    else: 
-        label_1.config(text="Ви нічого не ввели")
 
-window = Tk()
-window.config(bg="#FFCCCC") 
+
+window=Tk()
+window["bg"]="red"
 window.geometry("600x700")
-window.resizable(False, False) 
+window.resizable(0,0)
 
-entry_1 = Entry(
-    window,
-    font=("Arial", 14),
-    bd=2, 
-    width=30 
-)
-entry_1.pack(pady=20)
+enter1=Entry(window, font=("Arial", 14), bd=2, width=30)
+enter1.place(x=150, y=200)
+label1=Label(window, text="Ви нічого не ввели", font=("Arial", 14), bg="red")
+label1.place(x=220, y=250)
 
-button_1 = Button(
-    window,
-    text="Ок",
-    bg="white",
-    font=("Calibri", 13)
-)
+but=Button(window, text="Ок", bg="grey", fg="white", font=("Calibri 13"))
+but.place(x=300, y=150)
 
-button_1.bind("<Button-1>", start)
-button_1.pack() 
-
-
-label_1 = Label(
-    window,
-    text="Ви нічого не ввели",
-    font=("Arial", 14),
-    bg="#FFCCCC" 
-)
-label_1.pack(pady=20)
+but.bind("<Button-1>", change)
 
 window.mainloop()

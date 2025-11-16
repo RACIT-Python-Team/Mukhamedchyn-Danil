@@ -1,30 +1,17 @@
 from tkinter import *
+from tkinter import messagebox
 
 def start(event):
     
-    selected_flavor = flavor_var.get()
-    selected_size = size_var.get()
-    
-    message = f"Ви вибрали {selected_flavor} морозиво у {selected_size} ріжку"
-    
-    popup_window = Toplevel(window)
-    popup_window.title("Ваше замовлення")
-    popup_window.geometry("400x100")
-    
-    popup_label = Label(
-        popup_window, 
-        text=message, 
-        font=("Arial", 12)
-    )
-    popup_label.pack(pady=20, padx=20) 
+    messagebox.showinfo("Замовлення", f"Ви вибрали {flavor_var.get()} морозиво у {size_var.get()} ріжку")
 
 
 window = Tk()
 window.title("Магазин морозива")
 window.geometry("350x300")
 
-flavor_var = StringVar(value="ванільне") 
-size_var = StringVar(value="маленькому")   
+flavor_var = StringVar(value="ванільне")
+size_var = StringVar(value="маленькому")
 
 label_flavor = Label(window, text="Оберіть тип морозива:")
 label_flavor.pack(anchor="w", padx=20)

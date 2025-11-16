@@ -1,21 +1,16 @@
 from tkinter import *
 
-def fun1(event):
-    window.geometry("650x560")
-    window.config(bg="green")
-    button_1.config(bg="blue")
+def change(event):
+    window1.geometry("600x400")
+    window1["bg"]="green"
+    but=Button(window1, text="Розфарбуй", bg="blue", fg="white")
+    but.place(x=100, y=90)
 
-window = Tk()
-window.geometry("400x300")
-window.title("Вікно №1")
 
-button_1 = Button(
-    window, 
-    text="Розфарбуй", 
-    bg="grey", 
-    fg="white"
-)
-button_1.place(x=100, y=90)
-
-button_1.bind("<Button-1>", fun1)
-window.mainloop()
+window1=Tk()
+window1.geometry("400x300")
+window1.title("Вікно №1")
+but=Button(window1, text="Розфарбуй", bg="grey", fg="white")
+but.place(x=100, y=90)
+window1.bind("<Button-1>", change)
+window1.mainloop()
