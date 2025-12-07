@@ -8,6 +8,16 @@ cv2.imshow('GrAY Artemko', Blur_Artem)
 cv2.imwrite('photo/Gray_Artem.jpg', Blur_Artem)
 cv2.imwrite('photo/Artemko_copy.jpg', artem)
 cv2.waitKey(0)
+video = cv2.VideoCapture(0)
+while True:
+    ret, frame = video.read()
+    if not ret:
+        break
+    cv2.imshow('Video', frame)
+    if cv2.waitKey(1) & 0xFF == ord('q'):
+        break
 
+
+video.release()
 cv2.destroyAllWindows()
 
