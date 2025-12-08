@@ -9,6 +9,7 @@ circle = mp_draw.DrawingSpec(color=(0, 255, 255), circle_radius=5)
 lines = mp_draw.DrawingSpec(color=(255,0,0), thickness=3)
 
 video = cv2.VideoCapture(0)
+countHand = 0
 
 while True:
     ret, frame = video.read()
