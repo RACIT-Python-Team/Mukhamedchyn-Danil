@@ -2,7 +2,11 @@ import cv2
 import mediapipe as mp
 
 myhand = mp.solutions.hands # підключаємо модуль hands
-hands = myhand.Hands() # об'єкт на основі класу
+hands = myhand.Hands(static_image_mode=False,
+max_num_hands=2,
+min_detection_confidence=0.5,
+min_tracking_confidence=0.5
+                     ) # об'єкт на основі класу
 mp_draw = mp.solutions.drawing_utils # підключаємо малювання
 
 circle = mp_draw.DrawingSpec(color=(255, 0, 0), circle_radius=5)
@@ -13,6 +17,7 @@ while True:
     ret, frame = video.read()
     if not ret:
         break
+    frame=cv2.flip(frame, 1)
     frame_rgb = cv2.cvtColor(frame, cv2.COLOR_BGR2RGB)#конвертація кольору для mp
     results = hands.process(frame_rgb)# записуємо список .multi_hand_landmarks у result
 
@@ -26,8 +31,8 @@ while True:
             mp_draw.draw_landmarks(frame,
                                    hand_landmarks,
                                    myhand.HAND_CONNECTIONS,
-                                   circle,
-                                   line
+                                   mp_draw.DrawingSpec(color=(255, 0, 0), circle_radius=5),
+                                   mp_draw.DrawingSpec(color=(0, 255, 0))
                                    )
 
             h, w, c = frame.shape
@@ -46,7 +51,7 @@ while True:
                 cv2.FONT_HERSHEY_SIMPLEX,
                 1,
                 color=(0, 255, 0),
-                thickness=2) # добавляємо текст на екран
+                thickness=2) # добавляємо кількість рук на екран
     cv2.imshow('Video', frame)
     if cv2.waitKey(1) & 0xFF == ord('q'):
         break
