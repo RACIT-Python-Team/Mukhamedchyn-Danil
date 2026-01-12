@@ -4,7 +4,7 @@ import mediapipe as mp
 
 frame = None
 
-cap = cv2.VideoCapture(0)
+cap = cv2.VideoCapture(r'C:\Users\danam\PycharmProjects\Mukhamedchyn-Danil\Block3\video\0001-0100.mkv')
 
 while True:
     ret, frame = cap.read()
@@ -13,8 +13,8 @@ while True:
 
     hsv_frame = cv2.cvtColor(frame, cv2.COLOR_BGR2HSV)
 
-    lower_color = np.array([90, 50, 50])
-    upper_color = np.array([130, 255, 255])
+    lower_color = np.array([100, 150, 20])
+    upper_color = np.array([130, 255, 150])
 
     mask = cv2.inRange(hsv_frame, lower_color, upper_color)
 

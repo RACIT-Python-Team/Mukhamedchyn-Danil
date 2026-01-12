@@ -8,7 +8,7 @@ MyHands = mp_hands.Hands(static_image_mode=False,
                          min_tracking_confidence=0.5)
 mp_draw = mp.solutions.drawing_utils
 
-video=cv2.VideoCapture(r'/Block2/video/video_2025-12-13_14-39-35.mp4')
+video=cv2.VideoCapture(0)
 INDEX_FINGER_TIP_ID = 8
 while video.isOpened():
     ret, frame = video.read()
@@ -33,9 +33,9 @@ while video.isOpened():
                         (0,0,255),
                         2)
             mp_draw.draw_landmarks(frame, hand_landmarks, mp_hands.HAND_CONNECTIONS)
-        cv2.imshow('Video', frame)
-        if cv2.waitKey(1) & 0xFF == ord('q'):
-            break
+    cv2.imshow('Video', frame)
+    if cv2.waitKey(1) & 0xFF == ord('q'):
+        break
 MyHands.close()
 video.release()
 cv2.destroyAllWindows()

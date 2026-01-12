@@ -9,9 +9,6 @@ min_tracking_confidence=0.5
                      ) # об'єкт на основі класу
 mp_draw = mp.solutions.drawing_utils # підключаємо малювання
 
-circle = mp_draw.DrawingSpec(color=(255, 0, 0), circle_radius=5)
-line = mp_draw.DrawingSpec(color=(0, 255, 0))
-
 video = cv2.VideoCapture(0)
 while True:
     ret, frame = video.read()
@@ -39,11 +36,11 @@ while True:
 
             point_8 = hand_landmarks.landmark[8]
 
-            cx, cy = int(point_8.x * w), int(point_8.y * h)
+            x, y = int(point_8.x * w), int(point_8.y * h)
 
-            print(f"Index Finger: x={cx}, y={cy}")
+            print(f"Index Finger: x={x}, y={y}")
 
-            cv2.circle(frame, (cx, cy), 15, (255, 0, 255), cv2.FILLED)
+            cv2.circle(frame, (x, y), 15, (255, 0, 255), cv2.FILLED)
 
     cv2.putText(frame,
                 f"Hands: {countHands}",

@@ -8,7 +8,7 @@ MyHands = mp_hands.Hands(static_image_mode=False,
                          min_tracking_confidence=0.5)
 mp_draw = mp.solutions.drawing_utils
 
-video = cv2.VideoCapture(0)
+video = cv2.VideoCapture(r'C:\Users\danam\PycharmProjects\Mukhamedchyn-Danil\Block2\video\video_2025-12-13_14-39-35.mp4')
 while video.isOpened():
     ret, frame = video.read()
     if not ret:
@@ -22,7 +22,7 @@ while video.isOpened():
                                    hand_landmarks,
                                    mp_hands.HAND_CONNECTIONS,
                                    mp_draw.DrawingSpec((0,0, 255), 2, 5),
-                                   mp_draw.DrawingSpec((0,255, 0), 2, 2),)
+                                   mp_draw.DrawingSpec((0,255, 0), 2, 2))
             thumb=hand_landmarks.landmark[4]
             Tx=int(thumb.x*W)
             Ty=int(thumb.y*H)
