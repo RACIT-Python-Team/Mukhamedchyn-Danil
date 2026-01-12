@@ -41,9 +41,9 @@ while video.isOpened():
                 text2 = f"MAP NOWM: ({scaled_x}, {scaled_y})"
                 cv2.circle(frame, (abs_x, abs_y), 5, status_color, -1)
                 cv2.putText(frame, "OUTSIDE MAP", (abs_x+10, abs_y), cv2.FONT_HERSHEY_SIMPLEX, 0.5, status_color, 1)
-        cv2.imshow('frame', frame)
-        if cv2.waitKey(1) & 0xFF == ord('q'):
-            break
+    cv2.imshow('frame', frame)
+    if cv2.waitKey(1) & 0xFF == ord('q'):
+        break
 my_hands.close()
 video.release()
 cv2.destroyAllWindows()
