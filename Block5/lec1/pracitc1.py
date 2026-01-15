@@ -25,8 +25,8 @@ while video.isOpened():
     results = hands.process(frame_rgb)
     if results.multi_hand_landmarks is not None:
         for hand_landmarks in results.multi_hand_landmarks:
-            pixel_x = int(hand_landmarks.landmark[8]*w)
-            pixel_y = int(hand_landmarks.landmark[8]*h)
+            pixel_x = int(hand_landmarks.landmark[8].x*w)
+            pixel_y = int(hand_landmarks.landmark[8].y*h)
             cv2.circle(frame, (pixel_x, pixel_y), 5, (0, 0, 255), -1)
             if pixel_y > TOUCH_THRESHOLD_Y:
                 is_touching = True

@@ -7,6 +7,7 @@ my_hands = mp_hands.Hands(max_num_hands=1,
                           min_detection_confidence=0.5,
                           min_tracking_confidence=0.5,
                           static_image_mode=False)
+mp_drawing=mp.solutions.drawing_utils
 video = cv2.VideoCapture(0)
 ROI_WIDTH_PERCENT = 0.7
 ROI_HEIGHT_PERCENT = 0.7

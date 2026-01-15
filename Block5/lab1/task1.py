@@ -35,7 +35,7 @@ while video.isOpened():
                 scalar_x = x/ROI_W
                 scalar_y = y/ROI_H
                 cv2.circle(frame, (pixel_x, pixel_y), 5, (0,0,255), -1)
-                if y < ROI_Y_START+200:
+                if y < 200:
                     cv2.putText(frame, f"Scaled X{scalar_x}, Scaled Y{scalar_y}", (x, y), cv2.FONT_HERSHEY_SIMPLEX, 0.5, (0,0,255), 2)
     cv2.imshow("Frame", frame)
     if cv2.waitKey(1) & 0xFF == ord('q'):
