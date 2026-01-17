@@ -34,7 +34,7 @@ def create_virtual_map(W, H, zones):
         zone["pixel_coords"] = (x1, y1, x2, y2)
 
         cv2.rectangle(virtual_map, (x1, y1), (x2, y2), zone["color"], -1)
-        cv2.putText(virtual_map, zone["name"], (x1, y1-20), cv2.FONT_HERSHEY_SIMPLEX, 0.5, zone["color"], 2)
+        cv2.putText(virtual_map, zone["name"], (x1, y1-10), cv2.FONT_HERSHEY_SIMPLEX, 0.5, zone["color"], 2)
     return virtual_map
 
 video = cv2.VideoCapture(0)
@@ -67,9 +67,9 @@ while video.isOpened():
                     if (norm_x>zx1 and norm_x<zx2 and norm_y>zy1 and norm_y<zy2):
                         color = zone["color"]
                         cx1, cy1, cx2, cy2 = zone["pixel_coords"]
-                        cv2.putText(virtual_map, zone["name"], (10, 30), cv2.FONT_HERSHEY_SIMPLEX, 0.5, zone["color"], 2)
+                        cv2.putText(frame, zone["name"], (50, 50), cv2.FONT_HERSHEY_SIMPLEX, 0.5, zone["color"], 2)
                         cv2.rectangle(virtual_map, (cx1, cy1), (cx2, cy2), (255, 255, 255), 4)
-            cv2.circle(frame, (abs_x, abs_y), 1, color, 3)
+            cv2.circle(frame, (abs_x, abs_y), 10, color, -1)
     cv2.imshow("Frame", frame)
     if cv2.waitKey(1) & 0xFF == ord('q'):
         break
