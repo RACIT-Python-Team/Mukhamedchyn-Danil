@@ -15,7 +15,6 @@ INTERACTIVE_ZONES = [
 
 def create_virtual_map(W, H):
     map_img = np.zeros((H, W, 3), dtype=np.uint8)
-    cv2.rectangle(map_img, (0, 0), (W, H), (20, 20, 20), -1)  # Темно-сірий фон
     cv2.putText(map_img, "VIRTUAL MAP", (10, 30), cv2.FONT_HERSHEY_SIMPLEX, 0.7, (255, 255, 255), 2)
     return map_img
 
