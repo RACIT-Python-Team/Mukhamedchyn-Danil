@@ -30,11 +30,11 @@ while video.isOpened():
 
     if results.multi_hand_landmarks is not None:
         for hand_landmark in results.multi_hand_landmarks:
-            x = int(hand_landmark.landmark[8].x)
-            y = int(hand_landmark.landmark[8].y)
-            if xp == 0 and y == 0:
+            x = int(hand_landmark.landmark[8].x*W)
+            y = int(hand_landmark.landmark[8].y*H)
+            if xp == 0 and yp == 0:
                 xp, yp = x, y
-            cv2.line(img_canvas, (xp, yp), (xp, y), draw_color, brush_thickness)
+            cv2.line(img_canvas, (xp, yp), (x, y), draw_color, brush_thickness)
             # оновлюємо змінні
             xp, yp = x, y
     else:
@@ -47,6 +47,7 @@ while video.isOpened():
 
     frame = cv2.bitwise_and(frame, img_inv)
     frame = cv2.bitwise_or(frame, img_canvas)
+    cv2.imshow('frame', frame)
     key = cv2.waitKey(1)
     if key & 0xFF == ord('q'):
         break
