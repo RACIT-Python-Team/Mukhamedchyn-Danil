@@ -34,7 +34,7 @@ def create_virtual_map(W, H, zones):
         zone["pixel_coords"] = (x1, y1, x2, y2)
 
         cv2.rectangle(virtual_map, (x1, y1), (x2, y2), zone["color"], -1)
-        cv2.putText(virtual_map, zone["name"], (x1, y1+20), cv2.FONT_HERSHEY_SIMPLEX, 0.5, zone["color"], 2)
+        cv2.putText(virtual_map, zone["name"], (x1, y1-20), cv2.FONT_HERSHEY_SIMPLEX, 0.5, zone["color"], 2)
     return virtual_map
 
 video = cv2.VideoCapture(0)
