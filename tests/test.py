@@ -56,3 +56,4 @@ while video.isOpened():
 
 video.release()
 cv2.destroyAllWindows()
+my_hands.close()
