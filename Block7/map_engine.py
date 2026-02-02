@@ -1,21 +1,18 @@
-import cv2
+ZONES = {
+    "Master room": (7, 16, 218, 448),
+    "Bedroom1": (220, 16, 349, 165),
+    "Bedroom2": (350, 14, 613, 165),
+    "Bath": (222, 232, 345, 449),
+    "Bedroom3": (352, 236, 526, 449),
+    "Hall_Part1": (223, 169, 627, 229),
+    "Hall_Part2": (526, 232, 616, 450)
+}
 
-img = cv2.imread('plan.png')
 
-img = cv2.resize(img, (640, 480))
-
-def CoordPicker(event, x, y, flags, param):
-    if event == cv2.EVENT_LBUTTONDOWN:
-        print(x, y)
-
-
-video = cv2.VideoCapture(0)
-while video.isOpened():
-    ret, frame = video.read()
-    cv2.namedWindow('CoordPicker')
-    cv2.setMouseCallback('CoordPicker', CoordPicker)
-    cv2.imshow('CoordPicker', img)
-    if cv2.waitKey(1) & 0xFF == ord('q'):
-        break
-video.release()
-cv2.destroyAllWindows()
+def active_zone(x, y):
+    for zone_name, (x1, y1, x2, y2) in ZONES.items():
+        if x1 < x < x2 and y1 < y < y2:
+            if "Hall" in zone_name:
+                return "Hall"
+            return zone_name
+    return None
