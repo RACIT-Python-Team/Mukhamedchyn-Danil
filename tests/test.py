@@ -47,7 +47,7 @@ while video.isOpened():
 
     frame = cv2.bitwise_and(frame, img_inv)
     frame = cv2.bitwise_or(frame, img_canvas)
-    cv2.imshow('frame', frame)
+    cv2.imshow("frame", frame)
     key = cv2.waitKey(1)
     if key & 0xFF == ord('q'):
         break
